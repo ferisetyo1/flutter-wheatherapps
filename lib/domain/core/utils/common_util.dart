@@ -1,7 +1,8 @@
 import 'dart:math';
 
 import 'package:connectivity/connectivity.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
+
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 

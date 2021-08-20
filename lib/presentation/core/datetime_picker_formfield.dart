@@ -20,7 +20,7 @@ class DateTimeField extends FormField<DateTime> {
     FormFieldSetter<DateTime>? onSaved,
     FormFieldValidator<DateTime>? validator,
     DateTime? initialValue,
-    AutovalidateMode? autovalidateMode,
+    AutovalidateMode autovalidateMode = AutovalidateMode.always,
     bool enabled = true,
 
     // Features

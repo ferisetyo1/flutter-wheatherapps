@@ -1,0 +1,1 @@
+[{"type":{"import":"package:boilerplate/domain/i_login_repository.dart","name":"ILoginRepository","isNullable":false},"typeImpl":{"import":"package:boilerplate/infrastructure/login/login_repository.dart","name":"LoginRepository","isNullable":false},"isAsync":false,"preResolve":false,"injectableType":2,"dependsOn":[],"environments":[],"dependencies":[],"constructorName":""}]

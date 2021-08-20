@@ -10,14 +10,14 @@ abstract class IStorage {
   Future<void> putListData({required List dataList});
   Future<void> putString({required String key, required String value});
   Future<void> putBool({required String key, required bool value});
-  Future<String?> getString({required String key});
-  Future<DateTime?> getDate({required String key});
-  Future<int?> getInt({required String key});
-  Future<bool> getBool({required String key});
-  Future<double?> getDouble({required String key});
-  Future<Map<String, dynamic>?> getData();
-  Future<dynamic> getDynamicData({required String key});
-  Future<List?> getListData();
+  String? getString({required String key});
+  DateTime? getDate({required String key});
+  int? getInt({required String key});
+  bool getBool({required String key});
+  double? getDouble({required String key});
+  Map<String, dynamic>? getData();
+  dynamic getDynamicData({required String key});
+  List? getListData();
   Future<void> deleteData();
   Future<void> deleteString({required String key});
 }

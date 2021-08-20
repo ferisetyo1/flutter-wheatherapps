@@ -2,10 +2,13 @@ import 'dart:typed_data';
 import 'package:boilerplate/domain/core/i_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:injectable/injectable.dart';
 
-@LazySingleton(as: IStorage)
+@LazySingleton(
+  as: IStorage,
+)
 class Storage implements IStorage {
   late Box box;
   final HiveInterface hive;
@@ -23,7 +26,8 @@ class Storage implements IStorage {
     );
   }
 
-  Future close() async {
+  @disposeMethod
+  Future<void> close() async {
     await box.close();
     return;
   }
@@ -64,23 +68,23 @@ class Storage implements IStorage {
     return;
   }
 
-  Future<String?> getString({required String key}) async {
+  String? getString({required String key}) {
     String? value = box.get(key);
     return value;
   }
 
-  Future<DateTime?> getDate({required String key}) async {
+  DateTime? getDate({required String key}) {
     DateTime? date = box.get(key);
     // box.close();
     return date;
   }
 
-  Future<int?> getInt({required String key}) async {
+  int? getInt({required String key}) {
     int? value = box.get(key);
     return value;
   }
 
-  Future<bool> getBool({required String key}) async {
+  bool getBool({required String key}) {
     bool? value = box.get(key);
     if (value == null) {
       value = false;
@@ -89,23 +93,23 @@ class Storage implements IStorage {
     return value;
   }
 
-  Future<double?> getDouble({required String key}) async {
+  double? getDouble({required String key}) {
     double? value = box.get(key);
     // box.close();
     return value;
   }
 
-  Future<Map<String, dynamic>?> getData() async {
+  Map<String, dynamic>? getData() {
     Map<String, dynamic>? value = Map<String, dynamic>.from(box.toMap());
     print(value);
     return value;
   }
 
-  Future<dynamic> getDynamicData({required String key}) async {
+  getDynamicData({required String key}) {
     return box.get(key);
   }
 
-  Future<List?> getListData() async {
+  List? getListData() {
     final value = box.toMap();
     print(value);
     List datas = [];

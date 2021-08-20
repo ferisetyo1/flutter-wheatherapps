@@ -39,7 +39,7 @@
     },
     {
       "name": "build",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build-2.0.3",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -63,13 +63,13 @@
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build_runner-2.0.6",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build_runner-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "build_runner_core",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build_runner_core-7.0.1",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build_runner_core-7.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -182,12 +182,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "dartz",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/dartz-0.10.0-nullsafety.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "dio",
       "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/dio-4.0.0",
       "packageUri": "lib/",
@@ -236,6 +230,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_localizations",
+      "rootUri": "file:///Users/radit/fvm/versions/stable/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_secure_storage",
       "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-4.2.1",
       "packageUri": "lib/",
@@ -252,6 +252,12 @@
       "rootUri": "file:///Users/radit/fvm/versions/stable/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "fpdart",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/fpdart-0.0.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
     },
     {
       "name": "freezed",
@@ -273,7 +279,7 @@
     },
     {
       "name": "get",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/get-4.3.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/get-4.3.8",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -321,7 +327,7 @@
     },
     {
       "name": "injectable",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/injectable-1.4.1",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/injectable-1.5.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -668,7 +674,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-07-31T14:51:06.300771Z",
+  "generated": "2021-08-20T07:43:38.576694Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }

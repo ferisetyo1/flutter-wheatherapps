@@ -1,7 +1,9 @@
 # This is a generated file; do not edit or check into version control.
-connectivity=/Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity-3.0.6/
-connectivity_for_web=/Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_for_web-0.4.0+1/
-connectivity_macos=/Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_macos-0.2.1+2/
+connectivity_plus=/Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus-2.0.2/
+connectivity_plus_linux=/Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_linux-1.1.0/
+connectivity_plus_macos=/Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_macos-1.2.1/
+connectivity_plus_web=/Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_web-1.1.0+1/
+connectivity_plus_windows=/Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_windows-1.2.0/
 flutter_secure_storage=/Users/radit/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-4.2.1/
 path_provider=/Users/radit/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.4/
 path_provider_linux=/Users/radit/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.0/

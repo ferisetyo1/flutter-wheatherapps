@@ -1,11 +1,7 @@
-import 'package:boilerplate/presentation/home/home_page.dart';
+abstract class Routers {
+  static const String main = '/';
 
-import 'package:get/get.dart';
-
-class Routers {
-  static final String main = '/';
-
-  final List<GetPage> routers = [
-    GetPage(name: Routers.main, page: () => MyHomePage(title: 'title'))
-  ];
+  // final List<GetPage> routers = [
+  //   GetPage(name: Routers.main, page: () => MyHomePage(title: 'title'))
+  // ];
 }

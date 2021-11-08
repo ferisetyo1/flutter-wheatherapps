@@ -3,15 +3,15 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-26.0.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-30.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "analyzer",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/analyzer-2.3.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/analyzer-2.7.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.14"
     },
     {
       "name": "args",
@@ -26,14 +26,26 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "auto_route",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/auto_route-3.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "auto_route_generator",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/auto_route_generator-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "bloc",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/bloc-7.1.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/bloc-7.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "bloc_test",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/bloc_test-8.1.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/bloc_test-8.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -45,9 +57,9 @@
     },
     {
       "name": "build",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build-2.1.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build-2.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.14"
     },
     {
       "name": "build_config",
@@ -69,15 +81,15 @@
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build_runner-2.1.2",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build_runner-2.1.4",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.14"
     },
     {
       "name": "build_runner_core",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build_runner_core-7.1.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/build_runner_core-7.2.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.14"
     },
     {
       "name": "built_collection",
@@ -128,32 +140,50 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "code_id_flutter",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/code_id_flutter-0.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "collection",
       "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "connectivity",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity-3.0.6",
+      "name": "connectivity_plus",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "connectivity_for_web",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_for_web-0.4.0+1",
+      "name": "connectivity_plus_linux",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_linux-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "connectivity_macos",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_macos-0.2.1+2",
+      "name": "connectivity_plus_macos",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_macos-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "connectivity_platform_interface",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_platform_interface-2.0.1",
+      "name": "connectivity_plus_platform_interface",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_platform_interface-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_plus_web",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_web-1.1.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_plus_windows",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_windows-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -176,20 +206,20 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "cupertino_icons",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3",
+      "name": "dart_style",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/dart_style-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "dart_style",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/dart_style-2.1.0",
+      "name": "dbus",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/dbus-0.5.6",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "dio",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/dio-4.0.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/dio-4.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -201,7 +231,7 @@
     },
     {
       "name": "fast_immutable_collections",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/fast_immutable_collections-7.0.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/fast_immutable_collections-7.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -231,7 +261,7 @@
     },
     {
       "name": "flutter_bloc",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/flutter_bloc-7.2.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/flutter_bloc-7.3.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -261,7 +291,7 @@
     },
     {
       "name": "fpdart",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/fpdart-0.0.10",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/fpdart-0.0.12",
       "packageUri": "lib/",
       "languageVersion": "2.13"
     },
@@ -273,19 +303,13 @@
     },
     {
       "name": "freezed_annotation",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-0.14.3",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-0.15.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.14"
     },
     {
       "name": "frontend_server_client",
       "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/frontend_server_client-2.1.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "get",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/get-4.3.8",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -410,6 +434,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nm",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/nm-0.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "node_preamble",
       "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/node_preamble-2.0.1",
       "packageUri": "lib/",
@@ -464,6 +494,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "petitparser",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/petitparser-4.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/platform-3.0.2",
       "packageUri": "lib/",
@@ -489,7 +525,7 @@
     },
     {
       "name": "provider",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/provider-6.0.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/provider-6.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -537,7 +573,7 @@
     },
     {
       "name": "source_gen",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/source_gen-1.1.0",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/source_gen-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -621,7 +657,7 @@
     },
     {
       "name": "uuid",
-      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/uuid-3.0.4",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/uuid-3.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -668,6 +704,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/xml-5.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "yaml",
       "rootUri": "file:///Users/radit/.pub-cache/hosted/pub.dartlang.org/yaml-3.1.0",
       "packageUri": "lib/",
@@ -680,7 +722,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-09-16T03:03:33.825535Z",
+  "generated": "2021-11-08T06:09:08.765045Z",
   "generator": "pub",
-  "generatorVersion": "2.14.0"
+  "generatorVersion": "2.14.4"
 }

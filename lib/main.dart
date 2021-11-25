@@ -12,8 +12,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   await Hive.initFlutter();
   await configureInjection('dev');
-  Bloc.observer = getIt<SimpleBlocObserver>();
-  runApp(MyApp());
+
+  BlocOverrides.runZoned(() => runApp(MyApp()),
+      blocObserver: SimpleBlocObserver());
 }
 
 class MyApp extends StatelessWidget {

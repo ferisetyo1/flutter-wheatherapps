@@ -1,5 +1,6 @@
 import 'package:boilerplate/domain/i_login_repository.dart';
-import 'package:code_id_flutter/code_id_flutter.dart';
+import 'package:code_id_network/code_id_network.dart';
+
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: ILoginRepository)

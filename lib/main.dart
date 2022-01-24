@@ -1,7 +1,6 @@
 import 'package:boilerplate/injection.dart';
 import 'package:boilerplate/presentation/core/i10n/l10n.dart';
-
-import 'package:boilerplate/presentation/routers/app_routes.gr.dart';
+import 'package:boilerplate/presentation/routers/app_routes.dart';
 
 import 'package:boilerplate/simple_bloc_delegate.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +32,5 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: I10n.delegate.supportedLocales,
     );
-
-    // Get.changeThemeMode(Them)
   }
 }

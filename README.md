@@ -35,7 +35,7 @@ Use Architecture DDD
 
 [dio](https://pub.dev/packages/dio)
 
-[get](https://pub.dev/packages/get)
+[auto_route](https://pub.dev/packages/auto_route)
 
 [get_it](https://pub.dev/packages/get_it)
 

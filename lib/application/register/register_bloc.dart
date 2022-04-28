@@ -14,8 +14,8 @@ part 'register_bloc.freezed.dart';
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   IRegisterRepository _repo;
   RegisterBloc(this._repo) : super(RegisterState.initial()) {
-    on<RegisterEvent>((event, emit) {
-      event.when(
+    on<RegisterEvent>((event, emit) async {
+      await event.when(
           started: () {},
           onChangeFirstName: (value) {
             String? errorMsg;

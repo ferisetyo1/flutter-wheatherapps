@@ -14,8 +14,8 @@ part 'login_bloc.freezed.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ILoginRepository _repo;
   LoginBloc(this._repo) : super(LoginState.initial()) {
-    on<LoginEvent>((event, emit) {
-      event.when(
+    on<LoginEvent>((event, emit) async {
+      await event.when(
           started: () {},
           onChangeEmail: (value) {
             String? errorMsg;

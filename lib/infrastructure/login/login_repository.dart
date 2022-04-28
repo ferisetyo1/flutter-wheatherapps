@@ -1,19 +1,39 @@
-import 'package:boilerplate/domain/i_login_repository.dart';
-import 'package:code_id_network/code_id_network.dart';
+import 'dart:convert';
+
+import 'package:boilerplate/domain/model/user.dart';
+import 'package:boilerplate/domain/repo/i_login_repository.dart';
+import 'package:boilerplate/infrastructure/login/error_login.dart';
+import 'package:code_id_storage/code_id_storage.dart';
+import 'package:fpdart/fpdart.dart';
 
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: ILoginRepository)
 class LoginRepository implements ILoginRepository {
-  final INetworkService networkService;
-  const LoginRepository(this.networkService);
+  const LoginRepository();
+
   @override
-  Future<void> login() {
-    throw UnimplementedError();
-    // try {
-    //   networkService.getHttp(path: path)
-    // } catch (e) {
-    //   throw e;
-    // }
+  Future<Either<ErrorLogin, Unit>> onLogin(
+      {required String email, required String password}) async {
+    try {
+      IStorage userStorage = Storage;
+      IStorage authStorage = Storage;
+      await authStorage.openBox('User');
+      await userStorage.openBox('Auth');
+      String? jsonData = await userStorage.getData(key: email) as String?;
+      if (jsonData != null) {
+        Map<String, dynamic> obj = jsonDecode(jsonData);
+        User user = User.fromJson(obj);
+        if (password == user.password) {
+          authStorage.putDatum(key: "userSigned",value: email);
+          right(unit);
+        }
+        return left(ErrorLogin.WRONG_PASSWORD);
+      }
+      return left(ErrorLogin.NOT_REGISTERED_EMAIL);
+    } catch (e) {
+      print(e);
+      return left(ErrorLogin.UNKNOWN_ERROR);
+    }
   }
 }

@@ -3,6 +3,7 @@ import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:boilerplate/application/register/register_bloc.dart';
 import 'package:boilerplate/injection.dart';
 import 'package:boilerplate/presentation/routers/app_routes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,12 +42,17 @@ class RegisterPage extends StatelessWidget {
                         decoration: InputDecoration(
                             label: Text("Nama Depan"),
                             border: OutlineInputBorder(),
-                            errorText: state.errorFirstName),
+                            errorText: state.email?.value.fold(
+                                    (l) => l.maybeWhen(
+                                        empty: (_) =>
+                                            "Nama depan tidak boleh kosong",
+                                        orElse: () => "Nama depan Invalid"),
+                                    (r) => null) ??
+                                null),
                         onChanged: (value) {
                           bloc.add(
                               RegisterEvent.onChangeFirstName(value: value));
                         },
-                        
                       ),
                       SizedBox(
                         height: 8.0,
@@ -55,7 +61,13 @@ class RegisterPage extends StatelessWidget {
                         decoration: InputDecoration(
                             label: Text("Nama Belakang"),
                             border: OutlineInputBorder(),
-                            errorText: state.errorLastName),
+                            errorText: state.lastName?.value.fold(
+                                    (l) => l.maybeWhen(
+                                        empty: (_) =>
+                                            "Nama belakang tidak boleh kosong",
+                                        orElse: () => "Nama belakang Invalid"),
+                                    (r) => null) ??
+                                null),
                         onChanged: (value) {
                           bloc.add(
                               RegisterEvent.onChangeLastName(value: value));
@@ -66,10 +78,19 @@ class RegisterPage extends StatelessWidget {
                       ),
                       TextFormField(
                         decoration: InputDecoration(
-                            label: Text("Email"), border: OutlineInputBorder(),errorText: state.errorMail),
+                            label: Text("Email"),
+                            border: OutlineInputBorder(),
+                            errorText: state.email?.value.fold(
+                                    (l) => l.maybeWhen(
+                                        unregisteredEmail: (failedValue) =>
+                                            "Email tidak terdaftar",
+                                        empty: (_) =>
+                                            "Email tidak boleh kosong",
+                                        orElse: () => "Email Invalid"),
+                                    (r) => null) ??
+                                null),
                         onChanged: (value) {
-                          bloc.add(
-                              RegisterEvent.onChangeEmail(value: value));
+                          bloc.add(RegisterEvent.onChangeEmail(value: value));
                         },
                       ),
                       SizedBox(
@@ -79,10 +100,15 @@ class RegisterPage extends StatelessWidget {
                         decoration: InputDecoration(
                             label: Text("Alamat"),
                             border: OutlineInputBorder(),
-                            errorText: state.errorAlamat),
+                            errorText: state.alamat?.value.fold(
+                                    (l) => l.maybeWhen(
+                                        empty: (_) =>
+                                            "Alamat tidak boleh kosong",
+                                        orElse: () => "Alamat Invalid"),
+                                    (r) => null) ??
+                                null),
                         onChanged: (value) {
-                          bloc.add(
-                              RegisterEvent.onChangeAlamat(value: value));
+                          bloc.add(RegisterEvent.onChangeAlamat(value: value));
                         },
                       ),
                       SizedBox(
@@ -93,7 +119,13 @@ class RegisterPage extends StatelessWidget {
                         decoration: InputDecoration(
                             label: Text("Password"),
                             border: OutlineInputBorder(),
-                            errorText: state.errorPassword,
+                            errorText: state.password?.value.fold(
+                                    (l) => l.maybeWhen(
+                                        lengthTooShort: (failedValue, min) =>
+                                            "Password minimal $min karakter",
+                                        orElse: () => "Password Invalid"),
+                                    (r) => null) ??
+                                null,
                             suffix: InkWell(
                               onTap: () => bloc.add(RegisterEvent.onShowPass()),
                               child: Icon(state.showpass
@@ -110,9 +142,12 @@ class RegisterPage extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          bloc.add(RegisterEvent.onSubmit(onSuccess: (){
+                          bloc.add(RegisterEvent.onSubmit(onSuccess: () {
                             context.router.popUntilRoot();
-                          context.navigateTo(MyHomeRoute());
+                            context.navigateTo(MyHomeRoute());
+                          }, onError: () {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text("Terjadi kesalahan internal")));
                           }));
                         },
                         child: Text("Register"),

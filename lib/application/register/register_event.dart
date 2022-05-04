@@ -8,6 +8,6 @@ class RegisterEvent with _$RegisterEvent {
   const factory RegisterEvent.onChangeEmail({required String value}) = _OnChangeEmail;
   const factory RegisterEvent.onChangeAlamat({required String value}) = _OnChangeAlamat;
   const factory RegisterEvent.onChangePassword({required String value}) = _OnChangePassword;
-  const factory RegisterEvent.onSubmit({required Function() onSuccess}) = _OnSubmit;
+  const factory RegisterEvent.onSubmit({required Function() onSuccess,required Function() onError}) = _OnSubmit;
   const factory RegisterEvent.onShowPass() = _OnShowPass;
 }

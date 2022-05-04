@@ -1,4 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:boilerplate/domain/core/failures.dart';
+import 'package:boilerplate/domain/form_obj/form_email.dart';
+import 'package:boilerplate/domain/form_obj/form_non_empty.dart';
+import 'package:boilerplate/domain/form_obj/form_password.dart';
 import 'package:boilerplate/domain/model/user.dart';
 import 'package:boilerplate/domain/repo/i_register_repository.dart';
 import 'package:email_validator/email_validator.dart';
@@ -18,85 +22,44 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       await event.when(
           started: () {},
           onChangeFirstName: (value) {
-            String? errorMsg;
-            if (value.isEmpty) {
-              errorMsg = "Nama depan tidak boleh kosong";
-            }
-            emit(state.copyWith(firstName: value, errorFirstName: errorMsg));
+            emit(state.copyWith(firstName: FormNonEmpty(value)));
           },
           onChangeLastName: (value) {
-            String? errorMsg;
-            if (value.isEmpty) {
-              errorMsg = "Nama belakang tidak boleh kosong";
-            }
-            emit(state.copyWith(lastName: value, errorLastName: errorMsg));
+            emit(state.copyWith(lastName: FormNonEmpty(value)));
           },
           onChangeEmail: (value) {
-            String? errorMsg;
-            if (value.isEmpty) {
-              errorMsg = "Email tidak boleh kosong";
-            }
-            if (!EmailValidator.validate(value)) {
-              errorMsg = "Email tidak valid";
-            }
-
-            emit(state.copyWith(email: value, errorMail: errorMsg));
+            emit(state.copyWith(email: FormEmail(value)));
           },
           onChangeAlamat: (value) {
-            String? errorMsg;
-            if (value.isEmpty) {
-              errorMsg = "Alamat tidak boleh kosong";
-            }
-            emit(state.copyWith(alamat: value, errorAlamat: errorMsg));
+            emit(state.copyWith(alamat: FormNonEmpty(value)));
           },
           onChangePassword: (value) {
-            String? errorMsg;
-            if (value.isEmpty) {
-              errorMsg = "Password tidak boleh kosong";
-            }
-            if (value.length < 6) {
-              errorMsg = "Password minimal 6 karakter";
-            }
-            emit(state.copyWith(password: value, errorPassword: errorMsg));
+            emit(state.copyWith(password: FormPassword(value)));
           },
-          onSubmit: (onSuccess) async {
-            if (state.firstName.isEmpty) {
-              emit(state.copyWith(
-                  errorFirstName: "Nama depan tidak boleh kosong"));
-              return;
-            }
-            if (state.lastName.isEmpty) {
-              emit(state.copyWith(
-                  errorLastName: "Nama belakang tidak boleh kosong"));
-              return;
-            }
-            if (state.email.isEmpty) {
-              emit(state.copyWith(errorMail: "Email tidak boleh kosong"));
-              return;
-            }
-            if (!EmailValidator.validate(state.email)) {
-              emit(state.copyWith(errorMail: "Email tidak valid"));
-              return;
-            }
-            if (state.alamat.isEmpty) {
-              emit(state.copyWith(errorAlamat: "Alamat tidak boleh kosong"));
-              return;
-            }
-            if (state.password.isEmpty) {
-              emit(
-                  state.copyWith(errorPassword: "Password tidak boleh kosong"));
-              return;
-            }
-            if (state.password.length < 6) {
-              emit(
-                  state.copyWith(errorPassword: "Password minimal 6 karakter"));
-              return;
-            }
+          onSubmit: (onSuccess, onError) async {
+            final firstName =
+                state.firstName?.value.fold((l) => "", (r) => r) ?? "";
+            if (firstName.isEmpty) return;
+            final lastName =
+                state.lastName?.value.fold((l) => "", (r) => r) ?? "";
+            if (lastName.isEmpty) return;
+            final alamat = state.alamat?.value.fold((l) => "", (r) => r) ?? "";
+            if (alamat.isEmpty) return;
+            final email = state.email?.value.fold((l) => "", (r) => r) ?? "";
+            if (email.isEmpty) return;
+            final password =
+                state.password?.value.fold((l) => "", (r) => r) ?? "";
+            if (password.isEmpty) return;
 
             final resp = await _repo.onRegister(
-                user: User(state.firstName, state.lastName, state.alamat,
-                    state.email, state.password));
-            resp.fold((l) => emit(state.copyWith(errorMail: l)), (r) {
+                user: User(firstName, lastName, alamat, email, password));
+            resp.fold((l) {
+              l.maybeWhen(
+                unregisteredEmail: (a) =>
+                    {emit(state.copyWith(email: FormEmail.fromError(l)))},
+                orElse: () => {onError()},
+              );
+            }, (r) {
               emit(state);
               onSuccess();
             });

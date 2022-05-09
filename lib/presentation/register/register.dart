@@ -82,8 +82,8 @@ class RegisterPage extends StatelessWidget {
                             border: OutlineInputBorder(),
                             errorText: state.email?.value.fold(
                                     (l) => l.maybeWhen(
-                                        unregisteredEmail: (failedValue) =>
-                                            "Email tidak terdaftar",
+                                        alreadyRegisteredEmail: (failedValue) =>
+                                            "Email sudah terdaftar",
                                         empty: (_) =>
                                             "Email tidak boleh kosong",
                                         orElse: () => "Email Invalid"),
@@ -121,6 +121,8 @@ class RegisterPage extends StatelessWidget {
                             border: OutlineInputBorder(),
                             errorText: state.password?.value.fold(
                                     (l) => l.maybeWhen(
+                                        empty: (_) =>
+                                            "Password tidak boleh kosong",
                                         lengthTooShort: (failedValue, min) =>
                                             "Password minimal $min karakter",
                                         orElse: () => "Password Invalid"),

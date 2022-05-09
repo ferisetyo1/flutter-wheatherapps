@@ -19,7 +19,7 @@ class RegisterRepository implements IRegisterRepository{
       await userStorage.openBox('User');
       String? token = await userStorage.getData(key: user.email) as String?;
       if (token != null) {
-        return left(ValueFailure.unregisteredEmail(failedValue: user.email));
+        return left(ValueFailure.alreadyRegisteredEmail(failedValue: user.email));
       }
       userStorage.putDatum(key: user.email, value: jsonEncode(user.toJson()));
       await authStorage.openBox('Auth');

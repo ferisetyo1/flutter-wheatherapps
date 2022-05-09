@@ -38,7 +38,14 @@ class LoginPage extends StatelessWidget {
                     decoration: InputDecoration(
                         label: Text("Email"),
                         border: OutlineInputBorder(),
-                        errorText: state.errorMail),
+                        errorText: state.email?.value.fold(
+                                (l) => l.maybeWhen(
+                                    unregisteredEmail: (_) =>
+                                        "Email belum terdaftar",
+                                    empty: (_) => "Email tidak boleh kosong",
+                                    orElse: () => "Email Invalid"),
+                                (r) => null) ??
+                            null),
                     onChanged: (value) =>
                         bloc.add(LoginEvent.onChangeEmail(value: value)),
                   ),
@@ -50,7 +57,13 @@ class LoginPage extends StatelessWidget {
                     decoration: InputDecoration(
                         label: Text("Password"),
                         border: OutlineInputBorder(),
-                        errorText: state.errorPassword,
+                        errorText: state.password?.value.fold(
+                                (l) => l.maybeWhen(
+                                    lengthTooShort: (failedValue, min) =>
+                                        "Password minimal $min karakter",
+                                    orElse: () => "Password Invalid"),
+                                (r) => null) ??
+                            null,
                         suffix: InkWell(
                           onTap: () => bloc.add(LoginEvent.onShowPass()),
                           child: Icon(state.showPassword

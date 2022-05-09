@@ -34,6 +34,9 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.unregisteredEmail({
     required T failedValue,
   }) = UnregisteredEmail<T>;
+  const factory ValueFailure.alreadyRegisteredEmail({
+    required T failedValue,
+  }) = AlreadyRegisteredEmail<T>;
   const factory ValueFailure.invalidObject({
     required T failedValue,
   }) = InvalidObject<T>;

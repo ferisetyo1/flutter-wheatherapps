@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:boilerplate/domain/core/failures.dart';
 import 'package:boilerplate/domain/model/user.dart';
 import 'package:boilerplate/domain/repo/i_login_repository.dart';
 import 'package:boilerplate/infrastructure/login/error_login.dart';
@@ -13,7 +14,7 @@ class LoginRepository implements ILoginRepository {
   const LoginRepository();
 
   @override
-  Future<Either<ErrorLogin, Unit>> onLogin(
+  Future<Either<ValueFailure<String>, Unit>> onLogin(
       {required String email, required String password}) async {
     try {
       IStorage userStorage = Storage;
@@ -28,12 +29,12 @@ class LoginRepository implements ILoginRepository {
           authStorage.putDatum(key: "userSigned",value: email);
           right(unit);
         }
-        return left(ErrorLogin.WRONG_PASSWORD);
+        return left(ValueFailure.objectNotMatch(failedValue: password, matchValue: ""));
       }
-      return left(ErrorLogin.NOT_REGISTERED_EMAIL);
+      return left(ValueFailure.unregisteredEmail(failedValue: email));
     } catch (e) {
       print(e);
-      return left(ErrorLogin.UNKNOWN_ERROR);
+      return left(ValueFailure.unknownError(errMsg: "Terjadi kesalahan internal"));
     }
   }
 }

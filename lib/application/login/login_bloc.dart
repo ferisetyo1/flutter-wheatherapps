@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:boilerplate/domain/core/failures.dart';
+import 'package:boilerplate/domain/form_obj/form_email.dart';
+import 'package:boilerplate/domain/form_obj/form_password.dart';
 import 'package:boilerplate/domain/repo/i_login_repository.dart';
 import 'package:boilerplate/infrastructure/login/error_login.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -18,59 +20,29 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       await event.when(
           started: () {},
           onChangeEmail: (value) {
-            String? errorMsg;
-            if (value.isEmpty) {
-              errorMsg = "Email tidak boleh kosong";
-            }
-            if (!EmailValidator.validate(value)) {
-              errorMsg = "Email tidak valid";
-            }
-
-            emit(state.copyWith(email: value, errorMail: errorMsg));
+            emit(state.copyWith(email: FormEmail(value)));
           },
           onChangePassword: (value) {
-            String? errorMsg;
-            if (value.isEmpty) {
-              errorMsg = "Password tidak boleh kosong";
-            }
-            if (value.length < 6) {
-              errorMsg = "Password minimal 6 karakter";
-            }
-            emit(state.copyWith(password: value, errorPassword: errorMsg));
+            emit(state.copyWith(password: FormPassword(value)));
           },
           onSubmit: (onSuccess) async {
-            if (state.email.isEmpty) {
-              emit(state.copyWith(errorMail: "Email tidak boleh kosong"));
-              return;
-            }
-            if (!EmailValidator.validate(state.email)) {
-              emit(state.copyWith(errorMail: "Email tidak valid"));
-              return;
-            }
-            if (state.password.isEmpty) {
-              emit(
-                  state.copyWith(errorPassword: "Password tidak boleh kosong"));
-              return;
-            }
-            if (state.password.length < 6) {
-              emit(
-                  state.copyWith(errorPassword: "Password minimal 6 karakter"));
-              return;
-            }
-            final resp = await _repo.onLogin(
-                email: state.email, password: state.password);
+            final email = state.email?.value.fold((l) => "", (r) => r) ?? "";
+            if (email.isEmpty) return;
+            final password =
+                state.password?.value.fold((l) => "", (r) => r) ?? "";
+            if (password.isEmpty) return;
+            final resp = await _repo.onLogin(email: email, password: password);
             emit(resp.fold((l) {
-              switch (l) {
-                case ErrorLogin.NOT_REGISTERED_EMAIL:
-                  return state.copyWith(errorMail: "Email tidak terdaftar");
-                case ErrorLogin.WRONG_PASSWORD:
-                  return state.copyWith(errorPassword: "Password salah");
-                case ErrorLogin.UNKNOWN_ERROR:
-                  return state.copyWith(
-                      errorUnknown: "Terjadi kesalahan internal");
-                default:
-                  return state;
-              }
+              return l.maybeWhen(
+                  unregisteredEmail: (_email) => state.copyWith(
+                      email: FormEmail.fromError(
+                          ValueFailure.unregisteredEmail(failedValue: _email))),
+                  objectNotMatch: (fail, match) => state.copyWith(
+                      password: FormPassword.fromError(
+                          ValueFailure.objectNotMatch(
+                              failedValue: fail, matchValue: match))),
+                  orElse: () => state.copyWith(
+                      errorUnknown: "Terjadi kesalahan internal"));
             }, (r) {
               if (emit.isDone) {
                 onSuccess();

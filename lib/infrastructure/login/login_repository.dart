@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:boilerplate/domain/core/failures.dart';
 import 'package:boilerplate/domain/model/user.dart';
 import 'package:boilerplate/domain/repo/i_login_repository.dart';
-import 'package:boilerplate/infrastructure/login/error_login.dart';
 import 'package:code_id_storage/code_id_storage.dart';
 import 'package:fpdart/fpdart.dart';
 
@@ -19,12 +18,11 @@ class LoginRepository implements ILoginRepository {
     try {
       IStorage userStorage = Storage;
       IStorage authStorage = Storage;
-      await authStorage.openBox('User');
-      await userStorage.openBox('Auth');
-      String? jsonData = await userStorage.getData(key: email) as String?;
+      await authStorage.openBox('Auth');
+      await userStorage.openBox('User');
+      Map<String, dynamic>? jsonData = await userStorage.getData(key: email) as Map<String, dynamic>?;
       if (jsonData != null) {
-        Map<String, dynamic> obj = jsonDecode(jsonData);
-        User user = User.fromJson(obj);
+        User user = User.fromJson(jsonData);
         if (password == user.password) {
           authStorage.putDatum(key: "userSigned",value: email);
           right(unit);

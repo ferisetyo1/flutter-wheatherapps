@@ -20,7 +20,7 @@ class SplashPage extends StatelessWidget {
                 unauthenticated: () => context.replaceRoute(LoginRoute()),
                 authenticated: () => context.replaceRoute(MyHomeRoute()));
           },
-          child: Scaffold(body: Center(child: Text("test")),),
+          child: Scaffold(body: Center(child: Text("WeatherApp",style: TextStyle(fontSize: 24),)),),
         ));
   }
 }

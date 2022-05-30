@@ -1,27 +1,32 @@
 import 'package:bloc/bloc.dart';
-import 'package:boilerplate/domain/core/failures.dart';
 import 'package:boilerplate/domain/form_obj/form_email.dart';
 import 'package:boilerplate/domain/form_obj/form_non_empty.dart';
 import 'package:boilerplate/domain/form_obj/form_password.dart';
 import 'package:boilerplate/domain/model/user.dart';
-import 'package:boilerplate/domain/repo/i_register_repository.dart';
-import 'package:email_validator/email_validator.dart';
-import 'package:flutter/foundation.dart';
+import 'package:boilerplate/domain/repo/i_profile_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'register_event.dart';
-part 'register_state.dart';
-part 'register_bloc.freezed.dart';
+part 'profile_event.dart';
+part 'profile_state.dart';
+part 'profile_bloc.freezed.dart';
 
 @injectable
-class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  IRegisterRepository _repo;
-  RegisterBloc(this._repo) : super(RegisterState.initial()) {
-    on<RegisterEvent>((event, emit) async {
+class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
+  IProfileRepository _repo;
+  ProfileBloc(this._repo) : super(ProfileState.initial()) {
+    on<ProfileEvent>((event, emit) async {
       await event.when(
-          started: () {
-            
+          started: () async {
+            final user = await _repo.getDataUser();
+            emit(user.fold(
+                (l) => state,
+                (r) => state.copyWith(
+                    firstName: FormNonEmpty(r.firstName),
+                    lastName: FormNonEmpty(r.lastName),
+                    email: FormEmail(r.email),
+                    alamat: FormNonEmpty(r.alamat),
+                    password: FormPassword(r.password))));
           },
           onChangeFirstName: (value) {
             emit(state.copyWith(firstName: FormNonEmpty(value)));
@@ -53,21 +58,18 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
                 state.password?.value.fold((l) => "", (r) => r) ?? "";
             if (password.isEmpty) return;
 
-            final resp = await _repo.onRegister(
+            final resp = await _repo.updateDataUser(
                 user: User(firstName, lastName, alamat, email, password));
-            resp.fold((l) {
-              l.maybeWhen(
-                unregisteredEmail: (a) =>
-                    {emit(state.copyWith(email: FormEmail.fromError(l)))},
-                orElse: () => {onError()},
-              );
-            }, (r) {
-              emit(state);
-              onSuccess();
-            });
+            resp.fold((l) => onError(), (r) => onSuccess());
+            emit(state);
           },
           onShowPass: () {
             emit(state.copyWith(showpass: !state.showpass));
+          },
+          onLogout: (onSuccess, onError) async {
+            final resp=await _repo.logout();
+            resp.fold((l) => onError(), (r) => onSuccess());
+            emit(state);
           });
     });
   }

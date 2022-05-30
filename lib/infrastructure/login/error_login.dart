@@ -1,5 +1,0 @@
-enum ErrorLogin{
-  WRONG_PASSWORD,
-  NOT_REGISTERED_EMAIL,
-  UNKNOWN_ERROR
-}

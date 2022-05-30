@@ -17,11 +17,11 @@ class RegisterRepository implements IRegisterRepository{
       IStorage userStorage=Storage;
       IStorage authStorage=Storage;
       await userStorage.openBox('User');
-      String? token = await userStorage.getData(key: user.email) as String?;
-      if (token != null) {
+      Map<String,dynamic>? _user = await userStorage.getData(key: user.email) as Map<String,dynamic>?;
+      if (_user != null) {
         return left(ValueFailure.alreadyRegisteredEmail(failedValue: user.email));
       }
-      userStorage.putDatum(key: user.email, value: jsonEncode(user.toJson()));
+      userStorage.putDatum(key: user.email, value: user.toJson());
       await authStorage.openBox('Auth');
       authStorage.putDatum(key: 'userSigned',value: user.email);
       return right(unit);

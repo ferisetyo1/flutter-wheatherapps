@@ -1,3 +1,4 @@
+import 'package:boilerplate/presentation/cariKota/cari_kota_page.dart';
 import 'package:boilerplate/presentation/login/login.dart';
 import 'package:boilerplate/presentation/profile/profile.dart';
 import 'package:boilerplate/presentation/register/register.dart';
@@ -17,6 +18,7 @@ part 'app_routes.gr.dart';
     AutoRoute(path: Routers.login, page: LoginPage),
     AutoRoute(path: Routers.register, page: RegisterPage),
     AutoRoute(path: Routers.profile, page: ProfilePage),
+    AutoRoute(path: Routers.carikota, page: CariKotaPage),
   ],
 )
 class AppRouters extends _$AppRouters {}

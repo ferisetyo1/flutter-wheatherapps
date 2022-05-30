@@ -6,7 +6,9 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class RegisterModule {
   @Named('baseUrl')
-  String get baseUrl => 'https://jsonplaceholder.typicode.com';
+  String get baseUrl => 'https://api.openweathermap.org/data/2.5/';
+  @Named('appIDWeather')
+  String get appIDWeather => '0012a18b367daf42bcb21b702e0fcc3c';
 
   @preResolve
   @lazySingleton

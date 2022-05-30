@@ -13,7 +13,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<RegisterBloc>()..add(RegisterEvent.started()),
+      create: (context) => getIt<RegisterBloc>(),
       child: BlocBuilder<RegisterBloc, RegisterState>(
         builder: (context, state) {
           final RegisterBloc bloc = context.read<RegisterBloc>();
@@ -42,7 +42,7 @@ class RegisterPage extends StatelessWidget {
                         decoration: InputDecoration(
                             label: Text("Nama Depan"),
                             border: OutlineInputBorder(),
-                            errorText: state.email?.value.fold(
+                            errorText: state.firstName?.value.fold(
                                     (l) => l.maybeWhen(
                                         empty: (_) =>
                                             "Nama depan tidak boleh kosong",

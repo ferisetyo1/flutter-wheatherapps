@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:boilerplate/domain/core/failures.dart';
 import 'package:boilerplate/domain/form_obj/form_email.dart';
 import 'package:boilerplate/domain/form_obj/form_password.dart';
+import 'package:boilerplate/domain/repo/i_home_repository.dart';
 import 'package:boilerplate/domain/repo/i_login_repository.dart';
-import 'package:boilerplate/infrastructure/login/error_login.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -15,10 +15,14 @@ part 'login_bloc.freezed.dart';
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ILoginRepository _repo;
-  LoginBloc(this._repo) : super(LoginState.initial()) {
+  IHomeRepository _homerepo;
+  LoginBloc(this._repo,this._homerepo) : super(LoginState.initial()) {
     on<LoginEvent>((event, emit) async {
       await event.when(
-          started: () {},
+          started: () async {
+            var resp=await _homerepo.getDataWeather();
+            print(resp.fold((l) => "failed", (r) => "sukses"));
+          },
           onChangeEmail: (value) {
             emit(state.copyWith(email: FormEmail(value)));
           },

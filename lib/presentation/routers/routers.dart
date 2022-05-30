@@ -3,6 +3,7 @@ abstract class Routers {
   static const String login = '/login';
   static const String register = '/register';
   static const String profile = '/profile';
+  static const String carikota = '/carikota';
   static const String splash = '/';
 
   // final List<GetPage> routers = [
